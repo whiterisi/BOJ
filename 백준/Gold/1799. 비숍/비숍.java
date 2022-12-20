@@ -23,20 +23,20 @@ public class Main {
 		//체스 검은칸, 흰칸으로 나눠서 탐색
 		black=0; 
 		white =0;
-		bishop(-1, true, 0);
-		bishop(-1, false, 0);
+		bishop(0, true, 0);
+		bishop(0, false, 0);
 
 		System.out.println(black+white);
 	}
 	static void bishop(int col, boolean check, int cnt) {
-		 for (int i = col+1; i < N*N; i++) {
+		 for (int i = col; i < N*N; i++) {
 	            int x = i / N;
 	            int y = i % N;
 	            
 	            if(color[x][y]!=check||box[x][y]==0||!isOk(x,y))  continue;
 	            
 	            visit[x][y] = true;
-	            bishop(i, check, cnt+1);
+	            bishop(i+1, check, cnt+1);
 	            visit[x][y] = false;
 	        }
 	        if(check) black=Math.max(black, cnt);
